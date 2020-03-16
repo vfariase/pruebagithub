@@ -8,8 +8,8 @@ public interface IClienteService {
 	
 	public List<Cliente> findAll();
 	public Cliente save(Cliente cliente);
-	public Cliente update(Long id);
-	public void findById(Long id);
+	//public Cliente update(Cliente cliente);
+	public Cliente findById(Long id);
 	public void delete(Long id);
 
 }
