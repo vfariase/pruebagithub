@@ -1,6 +1,7 @@
 package com.vfarias.estudio.spring.boot.models.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,16 +37,11 @@ public class ClienteServiceImplementacion implements IClienteService{
 	
 	}
 
-	@Transactional
+	
 	@Override
-	public void findById(Long id) {
-		clienteDAO.findById(id);
-		
-	}
-
-	@Override
-	public Cliente update(Long id) {
-		  return clienteDAO.sa;
+	public Cliente findById(Long id) {
+		// TODO Auto-generated method stub
+		return clienteDAO.findById(id).orElse(null);
 	}
 	
 	
