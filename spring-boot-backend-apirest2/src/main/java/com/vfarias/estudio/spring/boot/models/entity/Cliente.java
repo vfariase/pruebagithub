@@ -7,10 +7,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+
+
 
 @Entity
 @Table(name="clientes")
@@ -22,22 +27,32 @@ public class Cliente implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotEmpty
-	@Column(nullable = false)
+	
+	//@Column(nullable = false)
 	private String nombre;
 	
-	@NotEmpty
+	
 	private String apellido;
 	
-	@NotEmpty
+	
+	@Column(name = "create_at")
+	@Temporal(TemporalType.DATE)
+	private Date fecha;
+    
+	
 	@Email
 	private String email;
 	
+	
+	
+	public Date getFecha() {
+		return fecha;
+	}
 
-	@NotNull(message="No puede estar vacío")
-	@Column(name = "create_at")
-	private Date fecha;
 
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
+	}
 
 	public Long getId() {
 		return id;
@@ -79,15 +94,7 @@ public class Cliente implements Serializable {
 	}
 
 
-	public Date getFecha() {
-		return fecha;
-	}
 
-
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
-	}
-	
 	
 	
 	
