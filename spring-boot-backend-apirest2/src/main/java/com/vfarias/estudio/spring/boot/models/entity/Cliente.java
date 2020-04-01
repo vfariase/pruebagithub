@@ -37,6 +37,7 @@ public class Cliente implements Serializable {
 	
 	@Column(name = "create_at")
 	@Temporal(TemporalType.DATE)
+	@NotNull(message = "no puede estar vacio")
 	private Date fecha;
     
 	
