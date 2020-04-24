@@ -14,6 +14,7 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 
 
@@ -28,10 +29,12 @@ public class Cliente implements Serializable {
 	private Long id;
 	
 	
-	//@Column(nullable = false)
+	@Column(nullable = false)
+	@NotEmpty
+	@Size(min = 4, max = 12)
 	private String nombre;
 	
-	
+	@NotEmpty
 	private String apellido;
 	
 	
@@ -40,12 +43,23 @@ public class Cliente implements Serializable {
 	@NotNull(message = "no puede estar vacio")
 	private Date fecha;
     
-	
+	@NotEmpty
+	@Column(nullable = false, unique = true)
 	@Email
 	private String email;
 	
+	private String foto;
 	
-	
+	public String getFoto() {
+		return foto;
+	}
+
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+
+
 	public Date getFecha() {
 		return fecha;
 	}
